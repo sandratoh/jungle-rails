@@ -5,9 +5,10 @@
   </header>
 
   <% if cart.empty? %>
-
-    <p class="alert-warning">You don't have anything in your cart right now.</p>
-    <%= link_to 'Back to Browse', products_path, class: 'btn btn-info' %>
+    <div class="jumbotron alert-warning">
+      <h4>You don't have anything in your cart right now.</h4>
+    </div>
+    <%= link_to 'Browse Products', products_path, class: 'btn btn-lg btn-primary' %>
 
   <% else %>
   
