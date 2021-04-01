@@ -15,18 +15,43 @@
 
   <li>line items: <%= @order.line_items.inspect %></li>
 
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th colspan="2">Product</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <% @order.line_items.each do |item| %>
+        <% product = item.product %>
+        <td>
+          <%= image_tag product.image.tiny %>
+        </td>
+        <td>
+          <h4><%= product.name %></h4>
+          <br>
+          <p><%= product.description %></p>
+        </td>
+        <td>
+          <%= humanized_money_with_symbol product.price %>
+        </td>
+        <td>
+          <%= item.quantity %>
+        </td>
+        <td>
+          <%= humanized_money_with_symbol product.price * item.quantity %>
+        </td>
+          
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
 
-  <% @order.line_items.each do |item| %>
-    <% product = item.product %>
-    <li><%= product.inspect %></li>
-    <li><%= product.name %></li>
-    <img src=<%= product.image %>>
-    
-    <li><%= product.image %></li>
-    <li><%= product.description %></li>
-    <li><%= item.quantity %></li>
 
-  <% end %>
 
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
