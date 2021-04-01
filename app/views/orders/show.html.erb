@@ -17,10 +17,14 @@
 
 
   <% @order.line_items.each do |item| %>
-    <%= product = item.product %>
+    <% product = item.product %>
     <li><%= product.inspect %></li>
-
-    @order.line_items => loop through array .product.name
+    <li><%= product.name %></li>
+    <img src=<%= product.image %>>
+    
+    <li><%= product.image %></li>
+    <li><%= product.description %></li>
+    <li><%= item.quantity %></li>
 
   <% end %>
 
