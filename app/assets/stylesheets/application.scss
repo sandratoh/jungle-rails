@@ -52,7 +52,30 @@ body {
   }
 }
 
+.about-us {
 
+  main {
+    display: flex;
+    justify-content: space-between;
+
+    img {
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      width: 40vw;
+    }
+
+    .text-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 40vw;
+    }
+
+  }
+
+}
 // Bootstrap adjustments
 form.button_to {
   display: inline;
