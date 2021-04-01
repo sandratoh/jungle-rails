@@ -18,28 +18,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-      <% @order.line_items.each do |item| %>
-        <% product = item.product %>
-        <td>
-          <%= image_tag product.image.tiny %>
-        </td>
-        <td>
-          <h4><%= product.name %></h4>
-          <br>
-          <p><%= product.description %></p>
-        </td>
-        <td>
-          <%= humanized_money_with_symbol product.price %>
-        </td>
-        <td>
-          <%= item.quantity %>
-        </td>
-        <td>
-          <%= humanized_money_with_symbol product.price * item.quantity %>
-        </td>
-        </tr>
-        <% end %>
+      <% @order.line_items.each do |line_item| %>
+        <%= render 'line_item', product: line_item.product, quantity: line_item[:quantity].to_i %>
+      <% end %>
     </tbody>
     <tfoot>
       <tr>
