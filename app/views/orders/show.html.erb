@@ -8,6 +8,29 @@
     <h4>Thank you for your order!</h4>
   </div>
 
+  <li><%= @order.inspect %><li>
+
+  <li><%= @order.line_items.inspect%><li>
+  
+
+  <li><%= @order[:email] %></li>
+  <li><%= humanized_money_with_symbol @order[:total_cents] / 100.0 %></li>
+  <li>line items: <%= @order.line_items.inspect %></li>
+
+
+  <% @order.line_items.each do |p| %>
+   <li> <%= product = Product.where(id:p.product_id) %><li>
+   <li> Here: <%= product.inspect %><li>
+    <li><%= product.inspect %></li>
+    <%= product.name %>
+
+    <%= p.product.inspect %>
+
+    @order.line_items => loop through array .product.name
+
+  <% end %>
+
+
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
 </section>
