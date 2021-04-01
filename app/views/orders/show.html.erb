@@ -8,13 +8,6 @@
     <h4>Thank you for your order!</h4>
   </div>
   
-  <li><%= @order[:email] %></li>
-  <li><%= humanized_money_with_symbol @order[:total_cents] / 100.0 %></li>
-
-  <li><%= @order.inspect %><li>
-
-  <li>line items: <%= @order.line_items.inspect %></li>
-
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -45,14 +38,23 @@
         <td>
           <%= humanized_money_with_symbol product.price * item.quantity %>
         </td>
-          
         </tr>
         <% end %>
     </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="2">
+          Order Email: <%= @order[:email] %>
+        </th>
+        <th colspan="2">
+          TOTAL:
+        </th>
+        <th>
+          <%= humanized_money_with_symbol @order[:total_cents] / 100.0 %>
+        </th>
+      </tr>
+    </tfoot>
   </table>
-
-
-
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
