@@ -6,10 +6,52 @@
 // App
 @import "products";
 
+// Variable
+$primary-color: rgb(78, 124, 138);
+$pastel-color: rgb(157, 214, 227);
+$dark-accent-color: rgb(5, 31, 53);
+
 // Global
 body {
   padding-top: 70px;
 }
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+
+  a:hover {
+    text-decoration: none;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20vw;
+    height: 20vw;
+    border: solid 5px $primary-color;
+    
+    &.dashboard-count {
+      text-align: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: $pastel-color;
+      color: $dark-accent-color;
+
+      .card-title {
+        margin-top: 10px;
+        font-size: 48px;
+      }
+
+      &:hover {
+        background-color: $dark-accent-color;
+        color:$pastel-color;
+      }
+    }
+  }
+}
+
 
 // Bootstrap adjustments
 form.button_to {
