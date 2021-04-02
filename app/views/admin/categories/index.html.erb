@@ -8,4 +8,32 @@
     <%= link_to '+ New Category', [:new, :admin, :category], class: 'btn btn-info' %>
   </div>
 
+  <div class="panel panel-default categories">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Products in Category</th>
+          <th>Inventory Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |c| %>
+          <tr>
+            <td>
+              <h4><%= c[:name] %></h4>
+            </td>
+            <td>
+              <p><%= c.products.count %></p>
+            </td>
+            <td>
+              <p><%= humanized_money_with_symbol c.products.sum(:price_cents) %></p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
 </section>
