@@ -1,0 +1,11 @@
+<tr>
+  <td>
+    <h4><%= category[:name] %></h4>
+  </td>
+  <td>
+    <p><%= category.products.count %></p>
+  </td>
+  <td>
+    <p><%= humanized_money_with_symbol category.products.sum(:price_cents) %></p>
+  </td>
+</tr>
