@@ -18,6 +18,12 @@ class Admin::SalesController < ApplicationController
     end
   end
 
+  def destroy
+    @sale = Sale.find params[:id]
+    @sale.destroy
+    redirect_to [:admin, :sales], notice: 'Sale deleted!'
+  end
+
   private
 
   def sale_params
