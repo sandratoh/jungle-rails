@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   describe 'Validations' do
 
-    context 'given a name, price, quantiy, and category' do
+    context 'given name, price, quantity, and category' do
       it 'saves successfully' do
         @category = Category.new
         @product = Product.new(name: 'Bluetooth headphones', price: 48999, quantity: 23, category: @category)
@@ -11,7 +11,7 @@ RSpec.describe Product, type: :model do
       end
     end
 
-    context 'given a price, quantity, and category' do
+    context 'given only price, quantity, and category' do
       it 'requires a name' do
         @category = Category.new
         @product = Product.new(price: 48999, quantity: 23, category: @category)
@@ -20,7 +20,7 @@ RSpec.describe Product, type: :model do
       end
     end
 
-    context 'given a name, quantity, and category' do
+    context 'given only name, quantity, and category' do
       it 'requires a price' do
         @category = Category.new
         @product = Product.new(name: 'Bluetooth headphones', quantity: 23, category: @category)
@@ -29,7 +29,7 @@ RSpec.describe Product, type: :model do
       end
     end
       
-    context 'given a name, price, and quantity' do
+    context 'given only name, price, and quantity' do
       it 'requires a category' do
         @product = Product.new(name: 'Bluetooth headphones', price: 48999, quantity: 23)
         expect(@product).not_to be_valid
