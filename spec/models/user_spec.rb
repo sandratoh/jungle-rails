@@ -53,6 +53,14 @@ RSpec.describe User, type: :model do
         expect(@new_user.errors.full_messages).to include("Email has already been taken")
       end
     end
+
+    context 'password input' do
+      it 'should have a minimum length of 4' do
+        @user = User.new(name: 'Michael', email: 'michael@test.COM', password: 'abc', password_confirmation: 'abc')
+        expect(@user).not_to be_valid
+      end
+    end
+
   end
 
   describe '.authenticate_with_credentials' do
