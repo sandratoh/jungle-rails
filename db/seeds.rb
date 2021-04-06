@@ -132,5 +132,75 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## SALES
+
+puts "Re-creating Sales ..."
+
+Sale.destroy_all
+
+Sale.create!({
+  name:  'X-mas Sale!',
+  percent_off: 50,
+  starts_on: "2020-12-05",
+  ends_on: "2020-12-29"
+})
+
+Sale.create!({
+  name:  'New Year New Me',
+  percent_off: 38,
+  starts_on: "2020-12-31",
+  ends_on: "2021-01-15"
+})
+
+Sale.create!({
+  name:  'Sweet Valentine\'s',
+  percent_off: 25,
+  starts_on: "2021-02-01",
+  ends_on: "2021-02-20"
+})
+
+Sale.create!({
+  name:  'Easter Sale',
+  percent_off: 30,
+  starts_on: "2021-03-28",
+  ends_on: "2021-04-08"
+})
+
+Sale.create!({
+  name:  'May The Fourth',
+  percent_off: 40,
+  starts_on: "2021-04-25",
+  ends_on: "2021-05-04"
+})
+
+## USERS
+
+puts "Re-creating Users ..."
+
+User.destroy_all
+
+User.create!({
+  first_name: 'Sandra',
+  last_name: 'To',
+  email: 'sandra@example.com',
+  password: 'test',
+  password_confirmation: 'test'
+})
+
+User.create!({
+  first_name: 'Tomato',
+  last_name: 'Potato',
+  email: 'toma@to.com',
+  password: 'tomato',
+  password_confirmation: 'tomato'
+})
+
+User.create!({
+  first_name: 'Killua',
+  last_name: 'Zoldyck',
+  email: 'test@test.com',
+  password: 'test',
+  password_confirmation: 'test'
+})
 
 puts "DONE!"
