@@ -183,24 +183,24 @@ User.create!({
   first_name: 'Sandra',
   last_name: 'To',
   email: 'sandra@example.com',
-  password: 'test',
-  password_confirmation: 'test'
+  password: ENV['DB_USER_PASSWORD'],
+  password_confirmation: ENV['DB_USER_PASSWORD']
 })
 
 User.create!({
   first_name: 'Tomato',
   last_name: 'Potato',
   email: 'toma@to.com',
-  password: 'tomato',
-  password_confirmation: 'tomato'
+  password: ENV['DB_USER_PASSWORD'],
+  password_confirmation: ENV['DB_USER_PASSWORD']
 })
 
 User.create!({
   first_name: 'Killua',
   last_name: 'Zoldyck',
   email: 'test@test.com',
-  password: 'test',
-  password_confirmation: 'test'
+  password: ENV['DB_USER_PASSWORD'],
+  password_confirmation: ENV['DB_USER_PASSWORD']
 })
 
 puts "DONE!"
