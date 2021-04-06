@@ -80,7 +80,7 @@ RSpec.describe User, type: :model do
       it 'should log user in' do
         @user_login = User.authenticate_with_credentials(@email, @password)
         expect(@user_login).not_to be_nil
-        expect(@user_login.email).to eql(@user.email)
+        expect(@user_login).to eql(@user)
       end
     end
 
@@ -105,23 +105,16 @@ RSpec.describe User, type: :model do
         @email = 'MICHAEL@dundermifflin.com'
         @user_login = User.authenticate_with_credentials(@email, @password)
         expect(@user_login).not_to be_nil
-        expect(@user_login.email).to eql(@user.email)
+        expect(@user_login).to eql(@user)
       end
     end
 
     context 'with email whitespaces' do
-      it 'should log user in with whitespaces before email' do
-        @email = '  michael@dundermifflin.com'
+      it 'should log user' do
+        @email = '  michael@dundermifflin.com  '
         @user_login = User.authenticate_with_credentials(@email, @password)
         expect(@user_login).not_to be_nil
-        expect(@user_login.email).to eql(@user.email)
-      end
-
-      it 'should log user in with whitespaces after email' do
-        @email = 'michael@dundermifflin.com  '
-        @user_login = User.authenticate_with_credentials(@email, @password)
-        expect(@user_login).not_to be_nil
-        expect(@user_login.email).to eql(@user.email)
+        expect(@user_login).to eql(@user)
       end
     end
 
