@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'Validations' do
-    
+
     context 'given name, email, password, and matching password_confirmation input fields' do
       it 'should save successfully' do
         @user = User.new(name: 'Michael', email: 'michael@test.com', password: 'test', password_confirmation: 'test')
@@ -101,9 +101,15 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'with whitespaces before email' do
-      it 'should log user in' do
+    context 'with email whitespaces' do
+      it 'should log user in with whitespaces before email' do
         @email = '  michael@dundermifflin.com'
+        @user_login = User.authenticate_with_credentials(@email, @password)
+        expect(@user_login).not_to be_nil
+      end
+
+      it 'should log user in with whitespaces after email' do
+        @email = 'michael@dundermifflin.com  '
         @user_login = User.authenticate_with_credentials(@email, @password)
         expect(@user_login).not_to be_nil
       end
