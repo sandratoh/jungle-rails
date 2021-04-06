@@ -16,10 +16,26 @@ RSpec.feature "Visitor navigates to product page", type: :feature, js: true do
     end
   end
 
-  scenario "They see product details navigating from home page" do
+  scenario "They see product details by clicking on product card 'Details' CTA" do
     # ACT
     visit root_path
     page.first('article.product').click_link('Details')
+
+    # DEBUG
+    # save_screenshot
+
+    # VERIFY
+    within('header') { expect(page).not_to have_content('Products') }
+    within('header') { expect(page).to have_content(@category.name) }
+    expect(page).to have_css 'article.product-detail'
+
+    # save_screenshot
+  end
+
+  scenario "They see product details by clicking on product card title or image" do
+    # ACT
+    visit root_path
+    page.first('article.product > header').click
 
     # DEBUG
     # save_screenshot
