@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
 
     context 'given missing first name, last name, email, password, or matching password input fields' do
       it 'should require first name' do
-        @user = User.new(last_name: 'Scott', email: 'michael@test.com', last_name: 'Scott', password: 'test', password_confirmation: 'test')
+        @user = User.new(last_name: 'Scott', email: 'michael@test.com', password: 'test', password_confirmation: 'test')
         expect(@user).not_to be_valid
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
