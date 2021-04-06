@@ -64,6 +64,54 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    # examples for this class method here
+    before do
+      User.create(name: 'Michael', email: 'michael@test.com', password: 'test', password_confirmation: 'test')
+    end
+
+    context 'with correct authentication input' do
+      it 'should log user in' do
+        email = 'michael@test.com'
+        password = 'test'
+        @user_login = User.authenticate_with_credentials(email, password)
+        expect(@user_login).not_to be_nil
+      end
+    end
+
+    context 'with nonexisting email' do
+      it 'should not log user in' do
+        email = 'michael@wrongemail.com'
+        password = 'test'
+        @user_login = User.authenticate_with_credentials(email, password)
+        expect(@user_login).to be_falsey
+      end
+    end
+
+    context 'with incorrect password' do
+      it 'should not log user in' do
+       email = 'michael@test.com'
+       password = 'TEST'
+       @user_login = User.authenticate_with_credentials(email, password)
+       expect(@user_login).to be_falsey
+      end
+    end
+
+    context 'with non-case-sensitive email' do
+      it 'should log user in' do
+        email = 'MICHAEL@test.com'
+        password = 'test'
+        @user_login = User.authenticate_with_credentials(email, password)
+        expect(@user_login).not_to be_nil
+      end
+    end
+
+    context 'with whitespaces before email' do
+      it 'should log user in' do
+        email = '  michael@test.com'
+        password = 'test'
+        @user_login = User.authenticate_with_credentials(email, password)
+        expect(@user_login).not_to be_nil
+      end
+    end
+    
   end
 end
