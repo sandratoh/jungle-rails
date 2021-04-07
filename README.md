@@ -1,6 +1,26 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
+A mini e-commerce application built with Rails 4.2 incorporating behaviour-driven development.
+
+## Features
+* Add items and edit quantities to cart before placing order
+* Purchase order with Stripe payment
+* User authentication for admin access to sales, categories, and products
+* Sold out badges and sales event banner according to database records
+
+## Final Products
+
+### Products Home Page
+![Home Page](https://github.com/sandratoh/jungle-rails/blob/master/docs/jungle_home.png)
+
+### Admin Dashboard
+![Admin Dashboard](https://github.com/sandratoh/jungle-rails/blob/master/docs/jungle_dashboard.png)
+
+### Admin Sales Control
+![Admin Sales](https://github.com/sandratoh/jungle-rails/blob/master/docs/jungle_sales.png)
+
+### Cart and Order Summary
+![Cart](https://github.com/sandratoh/jungle-rails/blob/master/docs/jungle_cart.png)
 
 ## Additional Steps for Apple M1 Machines
 
