@@ -37,7 +37,6 @@ RSpec.feature "After creation", type: :feature, js: true do
       stripe_charge_id: 1234
     )
 
-    # puts @order.inspect
     # 2. build line items on @order
     @line_item1 = @order.line_items.new(
       order_id: @order[:id],
@@ -65,21 +64,20 @@ RSpec.feature "After creation", type: :feature, js: true do
     # 4. reload products to have their updated quantities
     @product1.reload
     @product2.reload
+    
     # 5. use RSpec expect syntax to assert their new quantity values
     expect(@product1.quantity).to eql(0)
     expect(@product2.quantity).to eql(2)
   end
   
   scenario 'does not deduct quantity from products that are not in the order' do
-    # 1. initialize order with necessary fields (see orders_controllers, schema and model definition for what is required)
     @order = Order.new(
       id: 22,
       email: 'test@test.com',
       stripe_charge_id: 1234
     )
 
-    # 2. build line items on @order
-    @line_item1 = @order.line_items.new(
+    @line_item = @order.line_items.new(
       order_id: @order[:id],
       product_id: @product1[:id],
       quantity: 3,
@@ -87,13 +85,11 @@ RSpec.feature "After creation", type: :feature, js: true do
       total_price_cents: 3 * 6499
     )
 
-    @order.total_cents = @line_item1.total_price_cents
+    @order.total_cents = @line_item.total_price_cents
 
-    # 3. save! the order - ie raise an exception if it fails (not expected)
     @order.save!
-    @line_item1.save!
+    @line_item.save!
     
-    # 4. reload products to have their updated quantities
     @product3.reload
     expect(@product3.quantity).to eql(10)
   end
